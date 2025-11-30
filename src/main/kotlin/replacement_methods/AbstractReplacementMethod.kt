@@ -12,10 +12,10 @@ abstract class AbstractReplacementMethod: ReplacementMethod{
         return ""
     }
 
-    abstract fun doSensitive(fieldValue: Any?, replaceChar: Char, rule: Array<String>?): String
+    abstract fun doSensitive(fieldValue: Any?, replaceChar: Char, rule: Array<String>): String?
 
 
-    override fun sensitive(fieldValue: Any?, replaceChar: Char, rule: Array<String>?): String? {
+    override fun sensitive(fieldValue: Any?, replaceChar: Char, rule: Array<String>): String? {
         return when {
             fieldValue == null -> handleNull()
             fieldValue.toString().isEmpty() -> handleEmpty()

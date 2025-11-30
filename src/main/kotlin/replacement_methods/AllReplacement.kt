@@ -13,6 +13,6 @@ class AllReplacement : AbstractReplacementMethod() {
     override fun doSensitive(
         fieldValue: Any?,
         replaceChar: Char,
-        rule: Array<String>?
+        rule: Array<String>
     ): String = replaceChar.toString().repeat(DEFAULT_REPLACE_LENGTH)
 }
