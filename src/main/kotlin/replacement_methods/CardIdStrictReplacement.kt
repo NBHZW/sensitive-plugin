@@ -1,5 +1,7 @@
 package replacement_methods
 
+import constants.CARD_ID_STRICT_FRONT_KEEP_LENGTH
+import constants.CARD_ID_STRICT_TAIL_KEEP_LENGTH
 import utils.dealStrHide
 
 /**
@@ -14,9 +16,9 @@ class CardIdStrictReplacement : AbstractReplacementMethod() {
         rule: Array<String>,
     ): String? {
         if(fieldValue == null) return handleNull() else if(fieldValue.toString().isEmpty()) return handleEmpty()
-        val cardId = fieldValue as String
+        val cardId = (fieldValue as String).trim()
         if(rule.isEmpty()){
-            return cardId.dealStrHide(3,3, replaceChar = replaceChar)
+            return cardId.dealStrHide(CARD_ID_STRICT_FRONT_KEEP_LENGTH,CARD_ID_STRICT_TAIL_KEEP_LENGTH, replaceChar = replaceChar)
         }else{
             // 使用用户配置的rule规则
             val (frontCharNum, tailCharNum, hiddenCharNum) =  rule
